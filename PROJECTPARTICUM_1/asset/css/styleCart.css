@@ -1,0 +1,627 @@
+:root {
+  --clr-primary: rgb(105, 31, 31);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: transparent;
+  padding: 10px 10px;
+}
+.navbar{
+  /* position: sticky; */
+  top: 0;
+  z-index: 1;
+  
+}
+
+.img-logo {
+  width: 40px;
+}
+
+.img-logo > img {
+  width: 100%;
+}
+
+.toggler {
+  background-color: transparent;
+  color: var(--clr-primary);
+  font-size: 1.7rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.list-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+.list-nav a{
+  text-decoration: none;
+  color: #000000;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  border-bottom: 0.5px solid black;
+}
+
+.icon-container {
+  display: flex;
+  gap: 20px;
+}
+/* Car */
+.class-img {
+  padding: 3rem 3rem 0 3rem;
+}
+
+.img-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 370px;
+}
+
+.img-container > img {
+  width: 100%;
+}
+
+.del {
+  display: none;
+  justify-content: space-between;
+}
+
+.del > p {
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+.right-column {
+  display: flex;
+  flex-direction: column;
+}
+.checker-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.product-row > .model {
+  font-size: 2rem;
+}
+.price span{
+  /* font-size: 1rem; */
+  color: black;
+  font-size: 30px;
+}
+.key{
+  font-size: 2rem;
+}
+/* .checker-detail::before{
+    content: "";
+    margin: 0 10px 0 10px;
+    border-top:3px solid black;
+} */
+.checker-detail > p {
+  font-size: 1rem;
+  font-weight: 900;
+  margin-left: 60px;
+}
+.checker-detail > p > span {
+  color: gray;
+}
+.color-detl > ul {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+}
+.color-detl > ul > li {
+  background-color: aqua;
+}
+
+/* Product Row */
+.product-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Space between rows */
+}
+
+/* Style for the bold black labels (Model: and Price:) */
+.product-row span {
+  font-size: 16px; /* Adjust size as needed */
+  font-weight: bold;
+  color: #43484d; /* Black color */
+  margin-right: 10px; /* Space between the label and value */
+}
+
+/* Style for the grey values (BMW X5 and $84,675) */
+.model,
+.price {
+  font-size: 16px; /* Adjust size as needed */
+  font-weight: 300; /* Lighter font weight */
+  color: #86939e; /* Grey color */
+}
+
+/* Left Column */
+.left-column img {
+  width: 65%;
+  position: relative;
+  /* border-right: 1px solid #E1E8EE;  */
+  padding-right: 15px; /* Space between content and border */
+}
+
+/* .left-column img.active {
+    opacity: 1;
+  } */
+/* Product Description */
+/* .product-description{
+    padding-left: 20px;
+  } */
+
+.product-description span {
+  font-size: 12px;
+  color: #0c0c0c;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.product-description h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484d;
+  letter-spacing: -2px;
+}
+.product-description p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939e;
+  line-height: 24px;
+}
+/* Product Color */
+/* .product-configuration{
+    padding-left: 20px;
+  } */
+.product-color {
+  margin-bottom: 30px;
+}
+
+.color-choose {
+  display: flex;
+}
+
+.color-choose input[type="radio"] {
+  display: none;
+}
+
+.color-choose input[type="radio"] + label span {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: -1px 10px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.color-choose input[type="radio"]#red + label span {
+  background-color: #c91524;
+}
+.color-choose input[type="radio"]#blue + label span {
+  background-color: #314780;
+}
+.color-choose input[type="radio"]#black + label span {
+  background-color: #323232;
+}
+
+.color-choose input[type="radio"]#purple + label span {
+  background-color: hwb(288 3% 67%);
+}
+
+/* .color-choose input[type="radio"]:checked + label span {
+    background-image: url(images/check-icn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  } */
+/* Cable Configuration */
+.cable-choose {
+  display: flex;
+}
+
+.btn {
+  /* border-radius: 6px; */
+  width: 150px;
+  padding: 13px 20px;
+  font-size: 14px;
+  color: #5e6977;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin-right: 15px;
+}
+
+/* On hover, change the button background to black and text to white */
+.cable-choose button:hover {
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  border-color: #000000; /* Optional: Change border to match background */
+}
+
+.btn {
+  font-family: "Istok Web", sans-serif;
+  border: 3px solid #000000;
+  color: #000000;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.cable-choose button:hover,
+.cable-choose button:active,
+.cable-choose button:focus {
+  border: 2px solid #86939e;
+  outline: none;
+}
+.class-muex {
+  padding: 20px;
+}
+.boxUnderCar {
+  margin-top: 80px;
+  border: none;
+  /* Center vertically */ /* Add spacing between spans */
+  background-color: #d9d9d9;
+  padding: 20px;
+}
+
+
+.heading-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.class-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.boxUnderCar span {
+  color: #474444;
+  font-family: 'Istok Web', sans-serif;
+  font-size: 38px;
+  white-space: nowrap;          /* Prevent spans from wrapping */
+  position: relative;
+  text-shadow: 1px 1px 2px black;
+}
+
+.firstBox {
+  text-shadow: 1px 1px 2px black;
+  font-size: 38px;
+  width: 313px;                  /* Set the width to 190px */
+  height: 180%;                  /* Match the height of the parent (boxUnderCar) */
+  border-right: 4.5px solid #FFFFFF;     /* Add a border around the box */
+  display: flex;                 /* Use flexbox to align content */
+  align-items: center;           /* Center vertically */
+  justify-content: center;       /* Center horizontally */
+  padding: 10px;                 /* Optional: Add padding inside the box */
+}
+
+
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack icon on top of the button */
+  align-items: center; /* Center align items */
+  margin-bottom: 20px; /* Add spacing between each container */
+}
+
+.button-container i {
+  font-size: 24px; /* Adjust icon size */
+  color: #5e6977; /* Match icon color with button */
+  margin-bottom: 10px; /* Space between icon and button */
+}
+
+.testDrive {
+  font-family: "Istok Web", sans-serif;
+  /* text-shadow: 1px 1px 2px black; */
+  border: 2px solid #e1e8ee;
+  /* border-radius: 6px; */
+  padding: 13px 20px;
+  font-size: 10px;
+  color: #2d2c3e;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+/* On hover, change the button background to black and text to white */
+.testDrive:hover {
+  background-color: #2d2c3e; /* Black background */
+  color: #ffffff; /* White text */
+  border-color: #2d2c3e; /* Optional: Change border to match background */
+}
+.product-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px; /* Space between rows */
+  padding: 26px;
+}
+
+.product-name span {
+  font-size: 28px; /* Adjust size as needed */
+  font-weight: bold;
+  color: #6a6363; /* Text color */
+  margin-right: 10px; /* Space between the label and value */
+  position: relative; /* Required for the pseudo-element positioning */
+}
+
+.product-name .model::after {
+  content: ""; /* Creates an empty pseudo-element */
+  display: block;
+  position: absolute;
+  bottom: -5px; /* Adjust the distance from the text */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of the underline */
+  background-color: #6a6363; /* Color of the underline */
+}
+
+.product-name .key {
+  text-decoration: none;
+  color: #000000;
+}
+.description {
+  display: flex;
+  flex-direction: column; /* Arrange items in a row */
+  justify-content: space-between; /* Space between the image-description blocks */
+  gap: 20px;
+  padding: 2rem; /* Add space between blocks */
+  /* margin-left: 20px; */
+}
+
+.description1 {
+  display: flex;
+  flex-direction: column; /* Stack the image and description vertically */
+  /* align-items: center;               Center images horizontally */
+  /* Ensure each block takes up 1/3 of the row */
+  padding: 10px; /* Add padding around the entire block */
+  box-sizing: border-box;
+  /* Ensure padding is inside the element */
+}
+.img-class {
+  width: 350px;
+}
+.img-class > img {
+  width: 100%; /* Ensure the image takes up full width of its container */
+  height: auto;
+}
+.p-class {
+  width: 350px;
+}
+
+.description h3,
+.description p {
+  text-align: left; /* Align text to the left */
+  margin: 0; /* Remove default margins */
+  padding: 5px 0; /* Add padding for spacing */
+}
+
+.description h3 {
+  font-size: 18px; /* Increase heading size */
+  color: #43484d; /* Darker color for heading */
+}
+
+.description p {
+  font-size: 14px; /* Font size for the paragraph */
+  color: #5e6977; /* Set description text color */
+}
+
+.above-footer {
+  margin-top: 50px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  background-color: #171717;
+  color: #fff;
+}
+
+.new-box {
+  width: 320px; /* Keep the width for the text box */
+  height: 100%; /* Full height of the parent container */
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px 0;
+}
+
+.new-box h3,
+.new-box h5 {
+  margin-bottom: 20px;
+}
+
+.new-box button {
+  border: 2px solid #e1e8ee;
+  padding: 13px 20px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: black;
+  cursor: pointer;
+  transition: all 0.5s;
+  width: 190px;
+}
+
+.new-box button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: black;
+}
+.class-footer-img {
+  display: flex;
+  padding: 0 40px 0 40px;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+.div-img-footer {
+  display: flex;
+  gap: 20px;
+  width: 90px;
+}
+/* Style for the images */
+.div-img-footer > img {
+  width: 100%; /* Each image takes 15% of the container width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure images fit nicely inside their container */
+  /* margin-right: -3px;             Space between images */
+}
+
+/* Remove border styling if there was any applied elsewhere */
+/* .above-footer img:not(:last-child) {
+  margin-right: 20px;
+} */
+
+@media screen and (min-width: 700px) {
+  .nav-bar-container {
+    flex-wrap: nowrap;
+    padding: 10px 50px;
+    border-bottom: 1px solid beige;
+    gap: 50px;
+  }
+  .img-logo {
+    display: flex;
+  }
+  .list-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 5px 10px;
+    gap: 40px;
+  }
+
+  .nav-link {
+    border-bottom: none;
+    margin-top: 0;
+  }
+
+  .nav-link:hover {
+    border-bottom: 0.5px solid var(--clr-primary);
+    background-color: aliceblue;
+  }
+
+  .toggler {
+    display: none;
+  }
+  .img-car-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .img-container {
+    width: 500px;
+  }
+  .del {
+    display: flex;
+    justify-content: space-between;
+  }
+  .checker-detail {
+    content: "";
+    border-left: 4px solid black;
+    height: 300px;
+    margin-right: 40px;
+  }
+  .right-column {
+    margin-left: 40px;
+  }
+
+  .img-container > img {
+    width: 100%;
+  }
+  .color-choose input[type="radio"] + label span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: -1px 4px 0 0;
+  }
+  .product-row > .model {
+    font-size: 1.5rem;
+  }
+  .product-row > .price {
+    font-size: 0.6rem;
+    color: gray;
+  }
+  .btn {
+    width: 100px;
+    font-size: 10px;
+  }
+  .del > p:nth-child(1) {
+    border-right: 3px solid black;
+    height: 70px;
+    padding-right: 70px;
+  }
+  .del > p:nth-child(2) {
+    border-right: 3px solid black;
+    height: 70px;
+    padding-right: 70px;
+  }
+  .boxUnderCar {
+    display: flex;
+    gap: 10rem;
+  }
+  .heading-class {
+    margin-top: 25px;
+    justify-content: flex-start;
+  }
+  .class-icon {
+    gap: 50px;
+  }
+  .testDrive {
+    font-size: 14px;
+  }
+  .product-name {
+    flex-direction: row;
+  }
+  .description {
+    flex-direction: row;
+  }
+  .img-class {
+    width: 350px;
+  }
+  .above-footer {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .class-footer-img{
+    gap: 30px;
+    padding: 20px;
+  }
+  .div-img-footer {
+    width: 200px;
+    height: 250px;
+  }
+  .div-img-footer > img {
+    /* Each image takes 15% of the container width */
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure images fit nicely inside their container */
+    /* margin-right: -3px;             Space between images */
+  }
+  /* Style for the images */
+}

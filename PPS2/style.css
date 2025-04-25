@@ -1,0 +1,171 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+}
+/* ===================== make navbar ===========================*/
+.navbar{
+    display: flex;
+    width: 100%;
+    padding: 5px 10px 0 10px;
+    font-family: "Poppins", sans-serif;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+}
+
+.loGo{
+    width: 300px;
+    font-weight: bold;
+    display: flex;
+    
+   
+}
+.loGo .text{
+    margin-top:10px ;
+    font-weight: bold;
+   
+}
+.navbar .loGo img{
+    width: 40px;
+    height: 40px;
+}
+.navbar .list_nav ul{
+    display: flex;
+    margin: auto;
+    padding-left: 10px;
+}
+.navbar .list_nav ul li{
+    list-style: none;
+    padding: 0 10px 0 10px;
+    
+}
+/* .navbar .list_nav ul li a::before{
+    content: '';
+    background-color: black;
+    position: absolute;
+    transition: 1s ease-in;
+    width: 50%;
+     height: 2px;
+     left: 0;
+     bottom: 0;
+} */
+
+.navbar .list_nav ul li a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 2px;
+}
+.icon svg{
+    margin: 10px ;
+}
+
+
+
+.main-box{
+    width: 70%;
+    height: 500px;
+    background-color: whitesmoke;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+
+.signup-box {
+    width: 500px;
+    /* margin: 50px auto; */
+    background-color: #0000ff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    height: 500px;
+    border-radius: 25px;
+}
+
+.signup-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.signup-box .input-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.signup-box .input-field {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.signup-box .input-name input,
+.signup-box .input-field select {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.signup-box .input-field input,
+.signup-box .input-field select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.signup-box .input-field input[type="password"] {
+    position: relative;
+}
+
+.signup-box .show-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.signup-box .checkbox-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.signup-box .checkbox-field input {
+    margin-right: 10px;
+}
+
+.signup-box .login-link {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.signup-box .login-link a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.signup-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    color: #0000ff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-field select{
+    margin: 0 10px 0 10px;
+}

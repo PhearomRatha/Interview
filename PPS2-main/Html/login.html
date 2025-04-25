@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login & Registration</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <a href="/Html/index.html">
+                    <img src="/image/logor.png" alt="logo">
+                </a>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="showLogin()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="showRegister()">Sign Up</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="toggleMenu()"></i>
+            </div>
+        </nav>
+
+        <!-- Form box -->
+        <div class="form-box">
+            <!-- Login form -->
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></span>
+                    <header>Login</header>
+                </div>
+                <form id="loginForm" onsubmit="return handleLogin()">
+                    <div class="input-box">
+                        <input type="text" id="loginUsername" class="input-field" placeholder="Username or Email" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="loginPassword" class="input-field" placeholder="Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Sign In">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="loginRemember">
+                            <label for="loginRemember"> Remember Me</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Forgot password?</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Registration form -->
+            <div class="register-container" id="register">
+                <div class="top">
+                    <span>Have an account? <a href="#" onclick="showLogin()">Login</a></span>
+                    <header>Sign Up</header>
+                </div>
+                <form id="registerForm" onsubmit="return handleRegistration()">
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" id="firstName" class="input-field" placeholder="Firstname" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" id="lastName" class="input-field" placeholder="Lastname" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="registerEmail" class="input-field" placeholder="Email" required>
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="registerPassword" class="input-field" placeholder="Enter new Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm the Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Register">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="registerAgree">
+                            <label for="registerAgree"> Agree to Terms</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Terms & conditions</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("responsive");
+        }
+
+        function showLogin() {
+            var loginForm = document.getElementById("login");
+            var registerForm = document.getElementById("register");
+            loginForm.style.left = "4px";
+            registerForm.style.right = "-520px";
+            document.getElementById("loginBtn").classList.add("white-btn");
+            document.getElementById("registerBtn").classList.remove("white-btn");
+            loginForm.style.opacity = 1;
+            registerForm.style.opacity = 0;
+        }
+
+        function showRegister() {
+            var loginForm = document.getElementById("login");
+            var registerForm = document.getElementById("register");
+            loginForm.style.left = "-510px";
+            registerForm.style.right = "5px";
+            document.getElementById("loginBtn").classList.remove("white-btn");
+            document.getElementById("registerBtn").classList.add("white-btn");
+            loginForm.style.opacity = 0;
+            registerForm.style.opacity = 1;
+        }
+
+        function handleLogin() {
+            // Example: Handle login logic here (client-side validation)
+            var username = document.getElementById("loginUsername").value;
+            var password = document.getElementById("loginPassword").value;
+
+            // Basic validation (you should add more)
+            if (username === "" || password === "") {
+                alert("Please enter username/email and password.");
+                return false;
+            }
+
+            // Placeholder for actual login logic (e.g., AJAX request to server)
+            // For demonstration, we just show an alert
+            alert("Login successful!"); // Replace with actual logic
+
+            // Prevent form submission
+            return false;
+        }
+
+        function handleRegistration() {
+            // Example: Handle registration logic here (client-side validation)
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("registerEmail").value;
+            var password = document.getElementById("registerPassword").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var agreeTerms = document.getElementById("registerAgree").checked;
+
+            // Basic validation (you should add more)
+            if (firstName === "" || lastName === "" || email === "" || password === "" || confirmPassword === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            if (!agreeTerms) {
+                alert("Please agree to the terms.");
+                return false;
+            }
+
+            // Placeholder for actual registration logic (e.g., AJAX request to server)
+            // For demonstration, we just show an alert
+            alert("Registration successful!"); // Replace with actual logic
+
+            // Prevent form submission
+            return false;
+        }
+    </script>
+</body>
+</html>

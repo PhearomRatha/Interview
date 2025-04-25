@@ -1,0 +1,152 @@
+.navbar-custom {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-custom .navbar-brand img {
+    height: 70px;
+    margin-right: 15px;
+}
+
+.navbar-custom .nav-link {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbar-custom .right-nav .nav-item {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.navbar-custom .dropdown-item:hover {
+    background-color: #d3d9da;
+}
+.card-img-top {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-img-top:hover, .card-img-top:active {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(133, 42, 42, 0.2);
+}
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(49, 50, 90, 0.2);
+}
+.card-body {
+    transition: background-color 0.3s;
+}
+.card:hover .card-body {
+    background-color: #d9dee4;  /* Light grey background on hover */
+}
+.btn-custom {
+    margin-left: 197px;
+    transition: background-color 0.3s;
+}
+.btn-custom:hover {
+    background-color: #868789; /* Darker blue for the button on hover */
+}
+.text-decoration-none {
+    text-decoration: none; 
+    color: inherit;
+}
+.link-hover:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+h5{
+    text-align: start;
+}
+
+h1{
+    text-align:start;
+}
+.detail{
+    margin-right: 200px; 
+    position: relative;
+    top: -40px;
+    
+}
+.detail:hover{
+    background-color:bisque;
+
+}
+
+.container-body {
+    /* background-image: url('/image/backgroundbody.png'); Replace with your image path */
+    background-size: cover; /* Cover entire container */
+    background-position: center; /* Center the image */
+    background-color: rgb(69, 88, 97);
+    padding-top: 80px; /* Adjust padding as needed */
+    padding-bottom: 80px; /* Adjust padding as needed */
+}
+
+.welcome-text {
+    overflow: hidden;
+    margin-left: 30px;
+}
+
+.typing-animation {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid orange;
+    font-family: monospace;
+    animation: typing 2s steps(30, end) infinite;
+    width: 0;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+@keyframes changeColor {
+    0%, 100% {
+        color: rgb(214, 197, 197); /* Initial and final color */
+    }
+    50% {
+        color: rgb(76, 0, 255); /* Color at midpoint of animation */
+    }
+}
+
+welcome-text-content p {
+    margin-left: 20px;
+    color: #ffff;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.welcome-text-content p:hover {
+    color: rgb(242, 255, 0); /* Color change on hover */
+}
+
+.car-image {
+    max-width: 100%; 
+    /* height: 100%;  */
+    margin-top: 20px;
+    /* z-index: 999; */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
+    transform: scale(1.3);
+}
+
+.car-image:hover {
+    transform: scale(1.4); /* Scale up the image slightly on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+}
+.ratangle{
+    position: absolute;
+    width:600px;
+    height: 600px;
+    left:900px ;
+    rotate: 45deg;
+    border-radius: 50px;
+    background-color: white;
+}

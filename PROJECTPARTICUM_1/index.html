@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.carshop.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        #search-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        #search-input {
+            width: 10%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        #search-results {
+            position: absolute;
+            top: 100%;
+            /* Position the results directly below the input */
+            left: 77%;
+            width: 10%;
+            /* Ensure the results take the full width of the container */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: white;
+            /* Make sure it has a background */
+            z-index: 1000;
+            /* Ensure it stays above other content */
+        }
+
+        #search-results li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        #search-results li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="loGo">
+                <img src="asset/image/photo_2024-09-06_14-17-58-removebg-preview.png" alt="image">
+                <span>Car Shop</span>
+            </div>
+            <div class="list_nav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="demo_car.html">REVIEW</a></li>
+                    <li><a href="About.htm">ABOUT</a></li>
+                    <li><a href="index.html">PRODUCT</a></li>
+                </ul>
+            </div>
+            <input type="text" id="search-input" placeholder="Search for a car..." onkeyup="searchCars()" />
+            <ul id="search-results"></ul>
+
+
+            <div class="icon">
+                <svg class="icon-search" xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em"
+                    viewBox="0 0 32 32">
+                    <path fill="black"
+                        d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9" />
+                </svg>
+                <svg class="icon-dir" xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em"
+                    viewBox="0 0 16 16">
+                    <path fill="black" fill-rule="evenodd"
+                        d="M8 14.5c.23 0 .843-.226 1.487-1.514c.306-.612.563-1.37.742-2.236H5.771c.179.866.436 1.624.742 2.236C7.157 14.274 7.77 14.5 8 14.5M5.554 9.25a14.4 14.4 0 0 1 0-2.5h4.892a14.5 14.5 0 0 1 0 2.5zm6.203 1.5c-.224 1.224-.593 2.308-1.066 3.168a6.53 6.53 0 0 0 3.2-3.168zm2.623-1.5h-2.43a16 16 0 0 0 0-2.5h2.429a6.5 6.5 0 0 1 0 2.5Zm-10.331 0H1.62a6.5 6.5 0 0 1 0-2.5h2.43a16 16 0 0 0 0 2.5Zm-1.94 1.5h2.134c.224 1.224.593 2.308 1.066 3.168a6.53 6.53 0 0 1-3.2-3.168m3.662-5.5h4.458c-.179-.866-.436-1.624-.742-2.236C8.843 1.726 8.23 1.5 8 1.5s-.843.226-1.487 1.514c-.306.612-.563 1.37-.742 2.236m5.986 0h2.134a6.53 6.53 0 0 0-3.2-3.168c.473.86.842 1.944 1.066 3.168M5.31 2.082c-.473.86-.842 1.944-1.066 3.168H2.109a6.53 6.53 0 0 1 3.2-3.168ZM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0"
+                        clip-rule="evenodd" />
+                </svg>
+                <svg class="icon-user" xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em"
+                    viewBox="0 0 15 15">
+                    <path fill="black"
+                        d="M3 13v.5h1V13zm8 0v.5h1V13zm-7 0v-.5H3v.5zm2.5-3h2V9h-2zm4.5 2.5v.5h1v-.5zM8.5 10a2.5 2.5 0 0 1 2.5 2.5h1A3.5 3.5 0 0 0 8.5 9zM4 12.5A2.5 2.5 0 0 1 6.5 10V9A3.5 3.5 0 0 0 3 12.5zM7.5 3A2.5 2.5 0 0 0 5 5.5h1A1.5 1.5 0 0 1 7.5 4zM10 5.5A2.5 2.5 0 0 0 7.5 3v1A1.5 1.5 0 0 1 9 5.5zM7.5 8A2.5 2.5 0 0 0 10 5.5H9A1.5 1.5 0 0 1 7.5 7zm0-1A1.5 1.5 0 0 1 6 5.5H5A2.5 2.5 0 0 0 7.5 8zm0 7A6.5 6.5 0 0 1 1 7.5H0A7.5 7.5 0 0 0 7.5 15zM14 7.5A6.5 6.5 0 0 1 7.5 14v1A7.5 7.5 0 0 0 15 7.5zM7.5 1A6.5 6.5 0 0 1 14 7.5h1A7.5 7.5 0 0 0 7.5 0zm0-1A7.5 7.5 0 0 0 0 7.5h1A6.5 6.5 0 0 1 7.5 1z" />
+                </svg>
+
+            </div>
+        </div>
+    </nav>
+    <section class="contain">
+        <img src="asset/image/modelsmodelsrightsideview.jpg" alt="image">
+        <div class="btn-list">
+            <button class="btn-vmore">VIEW MORE</button>
+
+            <a href="demo_car.html"><button class="btn-Demo">DEMO CAR</button></a>
+        </div>
+        <div class="icon-type">
+            <h3>BMW M6</h3>
+            <div class="line"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24">
+                <path fill="black"
+                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12s12-5.373 12-12S18.627 0 12 0m0 .78C18.196.78 23.219 5.803 23.219 12c0 6.196-5.022 11.219-11.219 11.219S.781 18.196.781 12S5.804.78 12 .78m-.678.63q-.494.022-.992.078l-.107 2.944a10 10 0 0 1 .71-.094l.07-1.988l-.013-.137l.043.13l.664 1.489h.606l.664-1.488l.04-.131l-.01.137l.07 1.988c.232.022.473.054.71.094l-.109-2.944a15 15 0 0 0-.992-.078l-.653 1.625l-.023.12l-.023-.12zm6.696 1.824l-1.543 2.428c.195.15.452.371.617.522l1.453-.754l.092-.069l-.069.094l-.752 1.453c.163.175.398.458.53.63l2.43-1.544a16 16 0 0 0-.46-.568L18.777 6.44l-.105.092l.078-.115l.68-1.356l-.48-.48l-1.356.68l-.115.078l.091-.106l1.018-1.539c-.18-.152-.351-.291-.57-.46M5.5 3.785c-.36.037-.638.283-1.393 1.125a19 19 0 0 0-.757.914l2.074 1.967c.687-.76.966-1.042 1.508-1.613c.383-.405.6-.87.216-1.317c-.208-.242-.558-.295-.85-.175l-.028.01l.01-.026a.7.7 0 0 0-.243-.734a.72.72 0 0 0-.537-.15zm.006.615c.136-.037.277.06.308.2c.032.14-.056.272-.154.382c-.22.25-1.031 1.098-1.031 1.098l-.402-.383c.417-.51.861-.974 1.062-1.158a.55.55 0 0 1 .217-.139M12 4.883a7.114 7.114 0 0 0-7.08 6.388v.002a7.122 7.122 0 0 0 8.516 7.697a7.11 7.11 0 0 0 5.68-6.97A7.12 7.12 0 0 0 12 4.885zm-5.537.242q.072-.001.14.043c.088.059.128.16.106.26c-.026.119-.125.231-.205.318l-1.045 1.12l-.42-.4s.787-.832 1.045-1.099c.102-.106.168-.17.238-.205a.3.3 0 0 1 .14-.037zM12 5.818A6.175 6.175 0 0 1 18.182 12H12v6.182A6.175 6.175 0 0 1 5.818 12H12z" />
+            </svg>
+        </div>
+
+        <div class="box-text">
+            <h2>Welcome to Our Car Shop</h2>
+            <div class="text-de">
+                <p>At our car shop, we’re dedicated to bringing you the latest cars on the market. Whether you're
+                    looking for a reliable car or a good-looking SUV, we offer a great selection of new models to choose
+                    from. You can also take any car for a demo drive before making your decision.
+                    <br>
+                    <br>
+                    When you create an account, you can enjoy special features like rating our cars, sharing your
+                    feedback, and finding our store locations. Our search tool makes it easy to find the car that fits
+                    your needs. If you have any questions, our customer support team is always here to help.
+
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="contain-2">
+        <div class="typcar-logo">
+            <div class="type-bmw">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24">
+                    <path fill="black"
+                        d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12s12-5.373 12-12S18.627 0 12 0m0 .78C18.196.78 23.219 5.803 23.219 12c0 6.196-5.022 11.219-11.219 11.219S.781 18.196.781 12S5.804.78 12 .78m-.678.63q-.494.022-.992.078l-.107 2.944a10 10 0 0 1 .71-.094l.07-1.988l-.013-.137l.043.13l.664 1.489h.606l.664-1.488l.04-.131l-.01.137l.07 1.988c.232.022.473.054.71.094l-.109-2.944a15 15 0 0 0-.992-.078l-.653 1.625l-.023.12l-.023-.12zm6.696 1.824l-1.543 2.428c.195.15.452.371.617.522l1.453-.754l.092-.069l-.069.094l-.752 1.453c.163.175.398.458.53.63l2.43-1.544a16 16 0 0 0-.46-.568L18.777 6.44l-.105.092l.078-.115l.68-1.356l-.48-.48l-1.356.68l-.115.078l.091-.106l1.018-1.539c-.18-.152-.351-.291-.57-.46M5.5 3.785c-.36.037-.638.283-1.393 1.125a19 19 0 0 0-.757.914l2.074 1.967c.687-.76.966-1.042 1.508-1.613c.383-.405.6-.87.216-1.317c-.208-.242-.558-.295-.85-.175l-.028.01l.01-.026a.7.7 0 0 0-.243-.734a.72.72 0 0 0-.537-.15zm.006.615c.136-.037.277.06.308.2c.032.14-.056.272-.154.382c-.22.25-1.031 1.098-1.031 1.098l-.402-.383c.417-.51.861-.974 1.062-1.158a.55.55 0 0 1 .217-.139M12 4.883a7.114 7.114 0 0 0-7.08 6.388v.002a7.122 7.122 0 0 0 8.516 7.697a7.11 7.11 0 0 0 5.68-6.97A7.12 7.12 0 0 0 12 4.885zm-5.537.242q.072-.001.14.043c.088.059.128.16.106.26c-.026.119-.125.231-.205.318l-1.045 1.12l-.42-.4s.787-.832 1.045-1.099c.102-.106.168-.17.238-.205a.3.3 0 0 1 .14-.037zM12 5.818A6.175 6.175 0 0 1 18.182 12H12v6.182A6.175 6.175 0 0 1 5.818 12H12z" />
+                </svg>
+                <p>BMW</p>
+            </div>
+            <div class="type-bmw">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24">
+                    <path fill="black"
+                        d="m12 5.362l2.475-3.026c3.101.169 5.989.908 8.619 2.115l-.147-.061a7.55 7.55 0 0 1-3.18 2.42l-.051.018c-.146-1.439-1.154-1.79-4.354-1.79L12.001 24L8.62 5.034c-3.18 0-4.188.354-4.335 1.792a7.53 7.53 0 0 1-3.216-2.409L1.056 4.4c2.481-1.148 5.369-1.889 8.409-2.057l.061-.003zm0-3.9c.107-.002.233-.002.359-.002c3.967 0 7.738.84 11.144 2.352l-.175-.069a9 9 0 0 0 .65-1.331L24 2.349C20.449.886 16.329.026 12.01.001H12A32.6 32.6 0 0 0-.218 2.429L0 2.35c.224.555.449 1.015.703 1.458L.672 3.75C3.91 2.302 7.689 1.459 11.666 1.459l.352.002z" />
+                </svg>
+                <p>Tesla</p>
+            </div>
+            <div class="type-bmw">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24">
+                    <path fill="black"
+                        d="M12 8.236C5.872 8.236.905 9.93.905 12.002S5.872 15.767 12 15.767c6.127 0 11.094-1.693 11.094-3.765S18.127 8.236 12 8.236m-5.698 6.24c-.656.005-1.233-.4-1.3-1.101a1.42 1.42 0 0 1 .294-1.02c.195-.254.525-.465.804-.517c.09-.017.213-.006.264.054c.079.093.056.194-.023.234c-.213.109-.47.295-.597.55a.68.68 0 0 0 .034.696c.263.397.997.408 1.679-.225c.169-.156.32-.304.473-.48c.3-.344.4-.47.8-1.024q.007-.01.004-.018q-.004-.01-.02-.01c-.267.007-.5.087-.725.255c-.065.048-.159.041-.2-.021c-.046-.07-.013-.163.062-.215c.363-.253.76-.298 1.166-.367c0 0 .028.002.051-.03c.167-.213.292-.405.47-.621c.178-.22.41-.42.586-.572c.246-.212.404-.283.564-.37c.043-.022-.005-.049-.018-.049c-.896-.168-1.827-.386-2.717-.056c-.616.23-.887.718-.757 1.045c.093.231.397.27.683.13a1.55 1.55 0 0 0 .611-.544c.087-.134.27-.038.171.195c-.26.611-.757 1.097-1.363 1.118c-.516.016-.849-.363-.848-.831c.002-.924 1.03-1.532 2.11-1.622c1.301-.108 2.533.239 3.825.395c.989.12 1.938.123 2.932-.106c.118-.025.2.05.193.168c-.01.172-.143.337-.47.516c-.373.204-.763.266-1.17.27c-.984.008-1.901-.376-2.85-.582c.002.041.012.091-.023.117c-.525.388-1 .782-1.318 1.334c-.011.013-.005.025.013.024c.277-.015.525-.022.783-.042c.045-.004.047-.015.043-.048a.64.64 0 0 1 .2-.558c.172-.153.387-.17.53-.06c.16.126.147.353.058.523a.63.63 0 0 1-.382.31s-.03.006-.026.034c.006.043.2.151.217.18c.017.027.008.07-.021.102a.12.12 0 0 1-.095.045c-.033 0-.053-.012-.096-.035a.9.9 0 0 1-.27-.217c-.024-.031-.037-.032-.099-.029c-.279.017-.714.059-1.009.096c-.071.008-.082.022-.096.047c-.47.775-.972 1.61-1.523 2.17c-.592.6-1.083.758-1.604.762M19.05 10.71c-.091.158-1.849 2.834-1.96 3.11c-.035.088-.04.155-.004.204c.092.124.297.051.425-.038c.381-.262.645-.58.937-.858c.017-.013.046-.018.065 0c.043.04.106.091.15.137a.04.04 0 0 1 .002.057a6 6 0 0 1-.904.911c-.47.364-.939.457-1.172.224a.5.5 0 0 1-.14-.316c-.002-.057-.031-.06-.058-.034c-.278.275-.76.579-1.198.362c-.366-.18-.451-.618-.383-.986c.001-.008-.006-.06-.051-.03a1.3 1.3 0 0 1-.3.162a.85.85 0 0 1-.366.077a.52.52 0 0 1-.451-.253a.76.76 0 0 1-.095-.347c-.001-.011-.017-.032-.033-.005c-.3.457-.579.899-.875 1.363c-.016.022-.03.036-.06.037l-.587.001c-.036 0-.053-.028-.034-.063c.104-.2.674-1.03 1.06-1.736c.107-.194.085-.294.019-.337c-.083-.054-.248.027-.387.133c-.379.287-.697.735-.859.935c-.095.117-.185.291-.433.56c-.391.425-.91.669-1.408.5a.85.85 0 0 1-.546-.58c-.015-.052-.044-.066-.073-.032c-.08.1-.245.249-.383.342c-.015.011-.052.033-.084.017a1 1 0 0 1-.152-.199a.07.07 0 0 1 .016-.08c.197-.173.305-.271.391-.38c.064-.08.113-.17.17-.315c.12-.302.393-.866.938-1.158a1.8 1.8 0 0 1 .652-.219c.1-.01.183.002.213.08c.011.033.039.105.056.158c.011.032.003.057-.035.071c-.32.122-.643.311-.865.61c-.253.338-.321.746-.152.98c.123.17.322.2.514.139c.29-.092.538-.363.666-.663c.138-.329.16-.717.058-1.059c-.016-.059-.001-.104.037-.136c.077-.063.184-.112.215-.128a.14.14 0 0 1 .182.045c.106.157.163.378.17.607c.006.049.026.05.05.025c.19-.202.366-.418.568-.58c.185-.147.422-.267.643-.262c.286.006.428.2.419.546c-.001.044.03.04.051.011a1.2 1.2 0 0 1 .24-.264q.296-.244.611-.222c.26.02.468.257.425.527a.53.53 0 0 1-.281.406a.36.36 0 0 1-.405-.044a.34.34 0 0 1-.096-.322c.005-.025-.027-.048-.054-.02c-.254.264-.273.606-.107.76c.183.17.458.056.658-.075c.366-.239.65-.563.979-.813c.218-.166.467-.314.746-.351a.87.87 0 0 1 .454.052c.2.081.326.25.342.396c.004.043.036.048.063.01c.158-.246 1.005-1.517 1.075-1.65c.02-.041.044-.047.089-.047h.606c.035 0 .051.02.036.047m-2.32 2.204a.05.05 0 0 0-.003.04c.003.02.03.04.056.05c.01.003.015.01.004.032c-.075.16-.143.252-.237.391a1.5 1.5 0 0 1-.3.325c-.178.147-.424.307-.628.2c-.09-.047-.13-.174-.127-.276c.004-.288.132-.584.369-.875c.288-.355.607-.539.816-.438c.216.103.148.354.05.55zm-5.949-1.881a.4.4 0 0 1 .132-.345c.057-.05.133-.062.18-.022c.052.045.027.157-.026.234a.43.43 0 0 1-.245.177c-.018.004-.034-.004-.041-.044M12 7.5C5.34 7.5 0 9.497 0 12c0 2.488 5.383 4.5 12 4.5s12-2.02 12-4.5s-5.383-4.5-12-4.5m0 8.608C5.649 16.108.5 14.27.5 12.002C.5 9.733 5.65 7.895 12 7.895s11.498 1.838 11.498 4.107c0 2.268-5.148 4.106-11.498 4.106" />
+                </svg>
+                <p>Ford</p>
+            </div>
+            <div class="type-bmw">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24">
+                    <path fill="black"
+                        d="m20.576 14.955l-.01.028c-1.247 3.643-4.685 6.086-8.561 6.086s-7.32-2.448-8.562-6.09l-.01-.029H.71v.329l1.133.133c.7.08.847.39 1.038.78l.048.096c1.638 3.495 5.204 5.752 9.08 5.752s7.443-2.257 9.081-5.747l.048-.095c.19-.39.338-.7 1.038-.781l1.134-.134v-.328zM3.443 9.012c1.247-3.643 4.686-6.09 8.562-6.09s7.319 2.447 8.562 6.09l.01.028h2.728v-.328l-1.134-.133c-.7-.081-.847-.39-1.038-.781l-.047-.096C19.448 4.217 15.88 1.96 12.005 1.96c-3.881 0-7.443 2.257-9.081 5.752l-.048.095c-.19.39-.338.7-1.038.781l-1.133.133v.329h2.724zm13.862 1.586l-1.743 2.795h.752l.31-.5h2.033l.31.5h.747l-1.743-2.795zm1.033 1.766h-1.395l.7-1.124zm2.81-1.066l2.071 2.095H24v-2.795h-.614v2.085l-2.062-2.085h-.795v2.795h.619zM0 13.393h.619v-2.095l2.076 2.095h.781v-2.795h-.619v2.085L.795 10.598H0zm4.843-2.795h.619v2.795h-.62zm4.486 2.204c-.02.005-.096.005-.124.005H6.743v.572h2.5c.019 0 .167 0 .195-.005c.51-.048.743-.472.743-.843c0-.381-.243-.79-.705-.833c-.09-.01-.166-.01-.2-.01H7.643a1 1 0 0 1-.181-.014c-.129-.034-.176-.148-.176-.243c0-.086.047-.2.18-.238a.7.7 0 0 1 .172-.014h2.357v-.562H7.6c-.1 0-.176.004-.238.014a.79.79 0 0 0-.695.805c0 .343.214.743.685.81c.086.009.205.009.258.009H9.2c.029 0 .1 0 .114.005c.181.023.243.157.243.276a.26.26 0 0 1-.228.266m4.657 0c-.02.005-.096.005-.129.005H11.4v.572h2.5c.019 0 .167 0 .195-.005c.51-.048.743-.472.743-.843c0-.381-.243-.79-.705-.833c-.09-.01-.166-.01-.2-.01H12.3a1 1 0 0 1-.181-.014c-.129-.034-.176-.148-.176-.243c0-.086.047-.2.18-.238a.7.7 0 0 1 .172-.014h2.357v-.562h-2.395c-.1 0-.176.004-.238.014a.79.79 0 0 0-.695.805c0 .343.214.743.686.81c.085.009.204.009.257.009h1.59c.029 0 .1 0 .114.005c.181.023.243.157.243.276a.27.27 0 0 1-.228.266" />
+                </svg>
+                <p>Nissan</p>
+            </div>
+        </div>
+        <div class="card-menu">
+            <div class="type-menu">
+                <p>BMW</p>
+                <div class="line2"></div>
+                <div class="small_model">
+                    <ul>
+                        <li><a href="#">X</a></li>
+                        <li><a href="#">M</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hero-car" >
+                <div class="container mt-4">
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-6">
+                            <div class="card border-0 shadow">
+                                <img src="asset/image/bmw_x7.png" class="card-img-top" alt="Car 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Model X7</h5>
+                                    <p>Price: $200,000</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="button">
+                                        <a href="buy.html" class="btn btn-dark btn-custom"
+                                            onclick="addToCart('BMW X7', 'asset/image/bmw_x7.png', '$200,000')">Buy
+                                            Now</a>
+                                        <a href="cart.html" class="btn btn-warning btn-custom"
+                                            onclick="addToCart('BMW X7', 'asset/image/bmw_x7.png', '$200,000')">View
+                                            More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="col-lg-4 col-md- col-sm-6 col-12 mb-6">
+                            <div class="card border-0 shadow">
+                                <img src="asset/image/image_2024-09-05_141143625-removebg-preview.png"
+                                    class="card-img-top" style="height:165px;" alt="Car 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Model X6</h5>
+                                    <p>Price: $150,000</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="button">
+                                        <a href="buy.html" class="btn btn-dark btn-custom"
+                                            onclick="addToCart('Model X6', 'asset/image/image_2024-09-05_141143625-removebg-preview.png', '$150,000')">Buy
+                                            Now</a>
+
+                                        <a href="cart.html" class="btn btn-warning btn-custom"
+                                            onclick="addToCart('Model X6', 'asset/image/image_2024-09-05_141143625-removebg-preview.png', '$150,000')">View
+                                            More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-6">
+                            <div class="card border-0 shadow">
+                                <img src="asset/image/image_2024-09-05_141435129-removebg-preview.png"
+                                    class="card-img-top" alt="Car 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Model X5</h5>
+                                    <p>Price: $180,000</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="button">
+                                        <a href="buy.html" class="btn btn-dark btn-custom"
+                                            onclick="addToCart('Model X5', 'asset/image/image_2024-09-05_141435129-removebg-preview.png', '$180,000')">Buy
+                                            Now</a>
+                                        <a href="cart.html" class="btn btn-warning btn-custom"
+                                            onclick="addToCart('Model X5', 'asset/image/image_2024-09-05_141435129-removebg-preview.png', '$180,000')">View
+                                            More</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="container mt-4">
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-6">
+                            <div class="card border-0 shadow">
+                                <img src="asset/image/image_2024-09-05_142253049-removebg-preview.png"
+                                    class="card-img-top" alt="Car 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Model X4</h5>
+                                    <p>Price: $200,000</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="button">
+                                        <a href="buy.html" class="btn btn-dark btn-custom"
+                                            onclick="addToCart('Model X4', 'asset/image/image_2024-09-05_142253049-removebg-preview.png', '$200,000')">Buy
+                                            Now</a>
+                                        <a href="cart.html" class="btn btn-warning btn-custom"
+                                            onclick="addToCart('Model X4', 'asset/image/image_2024-09-05_142253049-removebg-preview.png', '$200,000')">View
+                                            More</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="col-lg-4 col-md- col-sm-6 col-12 mb-6">
+                            <div class="card border-0 shadow">
+                                <img src="asset/image/image_2024-09-05_143110735-removebg-preview.png"
+                                    class="card-img-top" alt="Car 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Model X3</h5>
+                                    <p>Price: $150,000</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="button">
+                                        <a href="buy.html" class="btn btn-dark btn-custom"
+                                            onclick="addToCart('Model X3', 'asset/image/image_2024-09-05_143110735-removebg-preview.png', '$150,000')">Buy
+                                            Now</a>
+                                        <a href="cart.html" class="btn btn-warning btn-custom"
+                                            onclick="addToCart('Model X3', 'asset/image/image_2024-09-05_143110735-removebg-preview.png', '$150,000')">View
+                                            More</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-6">
+                            <div class="card border-0 shadow">
+                                <img src="asset/image/image_2024-09-05_151038236-removebg-preview.png"
+                                    class="card-img-top" alt="Car 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Model X2</h5>
+                                    <p>Price: $180,000</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="button">
+                                        <a href="buy.html" class="btn btn-dark btn-custom"
+                                            onclick="addToCart('Model X2', 'asset/image/image_2024-09-05_151038236-removebg-preview.png', '$180,000')">Buy
+                                            Now</a>
+                                        <a href="cart.html" class="btn btn-warning btn-custom"
+                                            onclick="addToCart('Model X2', 'asset/image/image_2024-09-05_151038236-removebg-preview.png', '$180,000')">View
+                                            More</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="bottom-f">
+        <div class="footer-menu">
+            <div class="footer">
+
+                <div class="footer-top">
+                    <section class="footer1">
+                        <h3>Social networks & feeds</h3>
+                        <div class="footer-row">
+                            <!-- Telegram Icon -->
+                            <a href="https://t.me/yourTelegramProfile" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
+                                    viewBox="0 0 256 256">
+                                    <defs>
+                                        <linearGradient id="logosTelegram0" x1="50%" x2="50%" y1="0%" y2="100%">
+                                            <stop offset="0%" stop-color="#2aabee" />
+                                            <stop offset="100%" stop-color="#229ed9" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path fill="url(#logosTelegram0)"
+                                        d="M128 0C94.06 0 61.48 13.494 37.5 37.49A128.04 128.04 0 0 0 0 128c0 33.934 13.5 66.514 37.5 90.51C61.48 242.506 94.06 256 128 256s66.52-13.494 90.5-37.49c24-23.996 37.5-56.576 37.5-90.51s-13.5-66.514-37.5-90.51C194.52 13.494 161.94 0 128 0" />
+                                    <path fill="#fff"
+                                        d="M57.94 126.648q55.98-24.384 74.64-32.152c35.56-14.786 42.94-17.354 47.76-17.441c1.06-.017 3.42.245 4.96 1.49c1.28 1.05 1.64 2.47 1.82 3.467c.16.996.38 3.266.2 5.038c-1.92 20.24-10.26 69.356-14.5 92.026c-1.78 9.592-5.32 12.808-8.74 13.122c-7.44.684-13.08-4.912-20.28-9.63c-11.26-7.386-17.62-11.982-28.56-19.188c-12.64-8.328-4.44-12.906 2.76-20.386c1.88-1.958 34.64-31.748 35.26-34.45c.08-.338.16-1.598-.6-2.262c-.74-.666-1.84-.438-2.64-.258c-1.14.256-19.12 12.152-54 35.686c-5.1 3.508-9.72 5.218-13.88 5.128c-4.56-.098-13.36-2.584-19.9-4.708c-8-2.606-14.38-3.984-13.82-8.41c.28-2.304 3.46-4.662 9.52-7.072" />
+                                </svg>
+                            </a>
+                            <p>contact by Telegram</p>
+
+                        </div>
+                        <div class="footer-row">
+
+                            <a href="https://t.me/yourTelegramProfile" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
+                                    viewBox="0 0 256 256">
+                                    <path fill="#1877f2"
+                                        d="M256 128C256 57.308 198.692 0 128 0S0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445" />
+                                    <path fill="#fff"
+                                        d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A129 129 0 0 0 128 256a129 129 0 0 0 20-1.555V165z" />
+                                </svg>
+
+                            </a>
+                            <p>contact by Facebook</p>
+
+
+                        </div>
+                        <div class="footer-row">
+
+                            <a href="https://t.me/yourTelegramProfile" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
+                                    viewBox="0 0 48 48">
+                                    <path fill="#ffc107"
+                                        d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917" />
+                                    <path fill="#ff3d00"
+                                        d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691" />
+                                    <path fill="#4caf50"
+                                        d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.9 11.9 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44" />
+                                    <path fill="#1976d2"
+                                        d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917" />
+                                </svg>
+
+                            </a>
+                            <p>contact by email</p>
+
+                        </div>
+                        <div class="footer-row">
+
+                            <a href="https://t.me/yourTelegramProfile" target="_blank" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
+                                    viewBox="0 0 48 48">
+                                    <g fill="none" stroke="#000" stroke-linejoin="round" stroke-width="4">
+                                        <path stroke-linecap="round"
+                                            d="M41.7796 20.6066C42.0324 18.9108 41.9495 17.1747 41.5309 15.5054C40.978 13.3002 39.8392 11.2118 38.1147 9.4873C36.3902 7.76281 34.3018 6.62409 32.0967 6.07115C30.4274 5.65257 28.6912 5.56967 26.9954 5.82245" />
+                                        <path stroke-linecap="round"
+                                            d="M34.1897 19.8035C34.4605 17.9869 33.8967 16.0699 32.4983 14.6715C31.0998 13.2731 29.1829 12.7092 27.3663 12.98" />
+                                        <path fill="#4c9b17"
+                                            d="M14.3757 8.79424C15.1022 8.79424 15.7716 9.1883 16.1243 9.8235L18.5707 14.2303C18.891 14.8073 18.9061 15.5052 18.6109 16.0955L16.2541 20.8091C16.2541 20.8091 16.9371 24.3206 19.7955 27.179C22.654 30.0374 26.1536 30.7086 26.1536 30.7086L30.8665 28.3522C31.4572 28.0568 32.1556 28.0721 32.7328 28.393L37.1521 30.85C37.7868 31.2028 38.1803 31.8719 38.1803 32.598V37.6715C38.1803 40.2552 35.7804 42.1213 33.3323 41.2952C28.3044 39.5987 20.4997 36.3685 15.5529 31.4216C10.606 26.4748 7.37579 18.6701 5.67928 13.6422C4.85325 11.1941 6.71934 8.79424 9.30299 8.79424H14.3757Z" />
+                                    </g>
+                                </svg>
+
+                            </a>
+                            <p>contact by phone number</p>
+
+                        </div>
+
+                    </section>
+                    <section class="footer2">
+                        <h3>About</h3>
+                        <div class="footer-row">
+
+                            <p>Term & condition</p>
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p>Privacy Policy</p>
+
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p>Advertising</p>
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p>Our story</p>
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p>Contact</p>
+
+                        </div>
+
+                    </section>
+                    <section class="footer3">
+                        <h3>Search</h3>
+                        <div class="footer-row">
+
+                            <p>Tessla</p>
+
+                        </div>
+                        <div class="footer-row">
+
+                            <p>BMW</p>
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p> Ford</p>
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p>Nissan</p>
+
+                        </div>
+                        <div class="footer-row">
+
+
+                            <p>Contact</p>
+
+                        </div>
+
+                    </section>
+                </div>
+                <div class="footer-bottom">
+                    <div class="row2">
+                        <img src="asset/image/photo_2024-09-06_14-17-58-removebg-preview.png" alt="image">
+                    </div>
+                    <p>only-week All right reserved. CARSop.com is part of , the leading automotive classifieds
+                        platforms in Middle East and Asia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <script>
+        function addToCart(carName, carImage, carPrice) {
+            const carData = {
+                name: carName,
+                image: carImage,
+                price: carPrice
+            };
+            localStorage.setItem('selectedCar', JSON.stringify(carData));
+            window.location.href = 'cart.html';
+        }
+
+    </script>
+    <script src="asset/js/script.js"></script>
+
+
+
+
+
+</body>
+
+</html>

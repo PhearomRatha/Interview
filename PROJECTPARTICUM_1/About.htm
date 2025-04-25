@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="asset/css/styleCart.css" />
+  <title>About Us | Our Car Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+    }
+    
+    .navbar {
+      background-color: #f4f4f4; /* Same color as the body background */
+      color: #333;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc; /* Optional: Adds a subtle divider */
+    }
+    
+    .nav-bar-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .img-logo img {
+      height: 50px;
+    }
+    
+    .list-nav {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+    }
+    
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 10px 15px;
+      transition: background 0.3s;
+    }
+    
+    .nav-link:hover {
+      background-color: #ddd;
+    }
+    
+    .icon-container {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .icon-container i {
+      color: #333;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .main-box {
+            width: 70%;
+            max-width: 1000px;
+            background-color: whitesmoke;
+            margin: 5% auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 25px;
+            height: 400px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .blue-box {
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background: #007bff;
+            padding: 40px;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .typing-animation {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            border-right: 0.15em solid orange; /* Cursor effect */
+            white-space: nowrap;
+            overflow: hidden; /* Hide the text initially */
+            width: 0; /* Initial width of the text */
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation-delay: 1s; /* Delay for 1 second after the animation ends */
+            animation-iteration-count: infinite; /* Repeat the animation infinitely */
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: orange; }
+        }
+        
+
+        
+
+        /* Hover effect for the paragraph text */
+        .blue-box p {
+            margin-top: 18px;
+            font-size: 16px;
+            line-height: 1.8;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+        }
+
+        .blue-box p:hover {
+            color: orange; /* Change text color on hover */
+            transform: scale(1.05); /* Slightly enlarge the text on hover */
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .main-box {
+                width: 90%;
+            }
+
+            .blue-box {
+                padding: 30px;
+            }
+
+            .typing-animation {
+                font-size: 24px;
+            }
+
+            .blue-box p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .typing-animation {
+                font-size: 20px;
+            }
+
+            .blue-box p {
+                font-size: 13px;
+            }
+        }
+        #search-container {
+            position: relative;
+            width: 100%; /* Ensure it takes the full width of its parent */
+            max-width: 400px; /* Set a max width if needed */
+        }
+        
+        #search-input {
+            width: 10%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        #search-results {
+            position: absolute;
+            top: 100%; /* Position the results directly below the input */
+            left: 77%;
+            width: 10%; /* Ensure the results take the full width of the container */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: white; /* Make sure it has a background */
+            z-index: 1000; /* Ensure it stays above other content */
+        }
+    
+        #search-results li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+    
+        #search-results li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+ 
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-bar-container">
+      <div class="img-logo">
+        <img src="asset/image/photo_2024-09-06_14-17-58-removebg-preview.png" alt="Logo" />
+      </div>
+      <button class="toggler">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="list-nav">
+        <a href="index.html"><li class="nav-link">Home</li></a>
+        <a href="demo_car.html"><li class="nav-link">Review</li></a>
+        <a href="About.htm"><li class="nav-link">About</li></a>
+        <a href="cart.html"><li class="nav-link">Car</li></a>
+    
+      </ul>
+      <input type="text" id="search-input" placeholder="Search for a car..." onkeyup="searchCars()" />
+<ul id="search-results"></ul>
+      <div class="icon-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-globe"></i>
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="main-box">
+        <div class="blue-box">
+            <h3 id="welcome-heading" class="typing-animation">Welcome to My Car Shop</h3>
+            <p id="welcome-paragraph">
+                At our car shop, we’re dedicated to bringing you the latest cars on the market. Whether you're looking for a reliable car or a stylish SUV, we offer a great selection of new models. You can take any car for a demo drive before making your decision.
+                
+                When you create an account, you can enjoy special features like rating our cars, sharing feedback, and finding store locations. Our search tool makes it easy to find the car that fits your needs. Our customer support team is always here to help.
+            </p>
+        </div>
+    </div>
+</main>
+<script src="asset/js/script.js"></script>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search for a car..." onkeyup="searchCars()" />
+        <ul id="search-results"></ul>
+    </div>
+</body>
+</html>

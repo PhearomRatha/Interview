@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      #search-container {
+            position: relative;
+            width: 100%; /* Ensure it takes the full width of its parent */
+            max-width: 400px; /* Set a max width if needed */
+        }
+        
+        #search-input {
+            width: 10%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        #search-results {
+            position: absolute;
+            top: 100%; /* Position the results directly below the input */
+            left: 77%;
+            width: 10%; /* Ensure the results take the full width of the container */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: white; /* Make sure it has a background */
+            z-index: 1000; /* Ensure it stays above other content */
+        }
+    
+        #search-results li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+    
+        #search-results li:hover {
+            background-color: #f0f0f0;
+        }
+  </style>
+    <link rel="stylesheet" href="asset/css/styleCart.css" />
+    <title>Document</title>
+  </head>
+  <body>
+      <nav class="navbar">
+      <div class="nav-bar-container">
+        <div class="img-logo">
+          <img src="asset/image/photo_2024-09-06_14-17-58-removebg-preview.png" alt="Logo" />
+        </div>
+        <button class="toggler">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+     
+        <ul class="list-nav">
+          <a href="index.html"><li class="nav-link">Home</li></a>
+          <a href="demo_car.html"><li class="nav-link">Review</li></a>
+          <a href="About.htm"><li class="nav-link">About</li></a>
+          <a href="cart.html"><li class="nav-link">Car</li></a>
+        </ul>
+        <input type="text" id="search-input" placeholder="Search for a car..." onkeyup="searchCars()" />
+        <ul id="search-results"></ul>
+        
+        <div class="icon-container">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-globe"></i>
+          <i class="fa-solid fa-circle-user"></i>
+        </div>
+            </div>
+    </nav>
+    <div class="container-detail">
+      <div class="img-car-container">
+        <div class="class-img">
+          <div class="img-container">
+            <img src="asset/image/FORD Ranger®.jpg" alt="Selected Car Image" />
+        </div>
+        
+          <div class="del">
+            <p>wheels</p>
+            <p>engine</p>
+            <p>LED</p>
+          </div>
+        </div>
+        <div class="checker-detail">
+          <div class="right-column">
+            <!-- Product Description -->
+            <div class="product-description">
+              <div class="product-row">
+                <span class="key">Model:</span>
+                <span class="model"></span> 
+              </div>
+              <div class="product-row">
+                <span class="key">Price: </span>
+                <span class="price"></span> 
+              </div>
+            </div>
+
+            <!-- Product Configuration -->
+            <div class="product-configuration">
+              <!-- Product Color -->
+              <div class="product-color">
+                <div class="color-choose">
+                  <div>
+                    <input
+                      data-image="red"
+                      type="radio"
+                      id="red"
+                      name="color"
+                      value="red"
+                      checked
+                    />
+                    <label for="red"><span></span></label>
+                  </div>
+                  <div>
+                    <input
+                      data-image="blue"
+                      type="radio"
+                      id="blue"
+                      name="color"
+                      value="blue"
+                    />
+                    <label for="blue"><span></span></label>
+                  </div>
+                  <div>
+                    <input
+                      data-image="black"
+                      type="radio"
+                      id="black"
+                      name="color"
+                      value="black"
+                    />
+                    <label for="black"><span></span></label>
+                  </div>
+                  <div>
+                    <input
+                      data-image="purple"
+                      type="radio"
+                      id="purple"
+                      name="color"
+                      value="black"
+                    />
+                    <label for="purple"><span></span></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cable Configuration -->
+              <!-- <span>Cable configuration</span> -->
+
+              <div class="cable-choose">
+                <button class="btn">Buy Now</button>
+                <button class="btn">View More</button>
+              </div>
+
+              <!-- <a href="#">How to configurate your headphones</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="class-muex">
+      <div class="boxUnderCar">
+        <header class="heading-class">
+          <p class="firstBox">GET START</p>
+        </header>
+        <div class="class-icon">
+          <div class="button-container">
+            <i class="fa-solid fa-wheelchair-move"></i>
+            <a href="demo_car.html"> <button class="testDrive" ><b>DRIVE DEMO</b></button></a>
+          </div>
+
+          <div class="button-container">
+            <i class="fa-solid fa-message"></i>
+            <button class="testDrive"><b>Exclusive Offer</b></button>
+          </div>
+
+          <div class="button-container">
+            <i class="fa-solid fa-gear"></i>
+            <button class="testDrive"><b>Request For Service</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-name">
+      <span class="key">BMW X5: </span>
+      <span class="model">EXCELLENT TRACTION WITH xOFFROAD PACKAGE.</span>
+    </div>
+    <div class="description">
+      <span class="description1">
+        <div class="img-class">
+          <img src="asset/image/Car3.png" alt="" />
+        </div>
+        <h3>xSand.</h3>
+        <div class="p-class">
+          <p>
+            The following parameters are preset with the off-road mode "xSand":
+            additional ground clearance 20 mm, off-road ABS can be activated
+            from a speed of 10 km/h, readily controllable response from the
+            accelerator pedal. The result: optimum traction even on unsurfaced
+            roads.
+          </p>
+        </div>
+      </span>
+      <span class="description1">
+        <div class="img-class">
+          <img src="asset/image/Car3.png" alt="" />
+        </div>
+        <h3>xGravel.</h3>
+        <div class="p-class">
+          <p>
+            If you activate "xGravel" mode, the following parameters are preset:
+            additional ground clearance 20 mm, off-road-ABS can be activated
+            immediately, comfortable response from the accelerator pedal. The
+            result: perfect balance of smoothness and safety on loose, stony
+            ground.
+          </p>
+        </div>
+      </span>
+      <span class="description1">
+        <div class="img-class">
+          <img src="asset/image/Car3.png" alt="" />
+        </div>
+        <h3>xGravel.</h3>
+        <div class="p-class">
+          <p>
+            If you activate "xGravel" mode, the following parameters are preset:
+            additional ground clearance 20 mm, off-road-ABS can be activated
+            immediately, comfortable response from the accelerator pedal. The
+            result: perfect balance of smoothness and safety on loose, stony
+            ground.
+          </p>
+        </div>
+      </span>
+    </div>
+    <footer>
+      <div class="above-footer">
+        <div class="new-box">
+          <h3>RECENT PODCAST BY BMW SHOP</h3>
+          <h5>
+            Changing Lanes is the official podcast from BMW. In these audio
+            series, we take you with us on new journeys through the BMW
+            universe. Find out more about sustainability, innovation,
+            technology, mobility and the latest trends. You can find and
+            subscribe to Changing Lanes on all major podcast platforms, so tune
+            in!
+          </h5>
+          <a href="index.html"><button><b>View More</b></button></a>
+        </div>
+        <div class="class-footer-img">
+          <div class="div-img-footer">
+            <img src="asset/image/redCar.png" alt="" />
+          </div>
+          <div class="div-img-footer">
+            <img src="asset/image/whiteCar.png" alt="" />
+          </div>
+          <div class="div-img-footer">
+            <img src="asset/image/greenCar.png" alt="" />
+          </div>
+          <div class="div-img-footer">
+            <img src="/asset/image/redCar.png" alt="" />
+          </div>
+          <div class="div-img-footer">
+            <img src="asset/image/whiteCar.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/js/index.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const carData = JSON.parse(localStorage.getItem('selectedCar'));
+          if (carData) {
+              document.querySelector('.img-car-container img').src = carData.image;
+              document.querySelector('.product-description .model').textContent = carData.name;
+              document.querySelector('.product-description .price').textContent = carData.price;
+          }
+      });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const carData = JSON.parse(localStorage.getItem('selectedCar'));
+        if (carData) {
+            document.querySelector('.img-car-container img').src = carData.image;
+            document.querySelector('.product-description .model').textContent = carData.name;
+            document.querySelector('.product-description .price').textContent = carData.price;
+        }
+    });
+</script>
+<script src="asset/js/script.js"></script>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search for a car..." onkeyup="searchCars()" />
+        <ul id="search-results"></ul>
+    </div>
+  
+  </body>
+</html>

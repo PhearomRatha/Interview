@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RUPP Location</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styles for the contact page */
+        body {
+            background-color: #b7bcc2; /* Light gray background color */
+        }
+        .contact-section {
+            padding: 80px 0;
+        }
+        .contact-form {
+            background-color: #bfb0b0; /* White background for form */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* Aspect ratio for responsive map */
+            position: relative;
+            height: 0;
+        }
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+        .contact-info {
+            background-color: #938a8a; /* White background for contact info */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-info mb-3"><a href="/Html/index.html" class="text-white">Back</a></button>
+            </div>
+        </div>
+        <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <h2 class="mb-4">Contact Us</h2>
+                            <form action="#" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-info">
+                            <h2 class="mb-4">Contact Information</h2>
+                            <p><i class="fas fa-map-marker-alt"></i> RUPP Campus, Phnom Penh, Cambodia</p>
+                            <p><i class="fas fa-phone-alt"></i> +855-23-123-456</p>
+                            <p><i class="fas fa-envelope"></i> info@rupp.edu.kh</p>
+                        </div>
+                        <div class="map-responsive">
+                            <!-- Replace the iframe with your Google Maps embed code for Rupp Arena -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1349.8702955867467!2d104.9178619234907!3d11.544968456781155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc615ba1b78a4f%3A0x4fa55c5040e32a6a!2sRoyal%20University%20of%20Phnom%20Penh!5e0!3m2!1sen!2sus!4v1591394560400!5m2!1sen!2sus" 
+                                width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>

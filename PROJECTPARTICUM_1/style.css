@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 800px; /* Added max-width for better control on larger screens */
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  h1 {
+    text-align: left; /* Keeping it left-aligned as in your design */
+    font-size: 24px;
+    margin-bottom: 10px; /* Added margin for better spacing */
+  }
+  
+  .subtext {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555; /* Slight color adjustment for readability */
+  }
+  
+  .form-section {
+    margin-bottom: 20px;
+  }
+  
+  .form-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    color: #555; /* Label text color for better visibility */
+  }
+  
+  input[type="text"], input[type="email"], input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .form-group {
+    display: flex;
+   
+     /* Added gap for space between the inputs */
+  }
+  .form-group .col{
+    width: 50%;
+    justify-self: start;
+  }
+  .form-group  input {
+    width: 80%;
+  }
+  .form-group .col > #input-num{
+    width: 80%;
+    height: 40px;
+    border: 0.5px solid #333;
+    padding-left:10px ;
+    border-radius:10px ;
+  }
+  .form-group .col .country-code{
+    font-size: 12px;
+    padding: 1px;
+    border-right: 2 px solid black
+  }
+  #phone-number{
+    border: none;
+    outline: none;
+    width: 75%;
+  }
+  .checkbox-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Added margin for better spacing */
+  }
+  
+  .checkbox-section input {
+    margin-right: 10px;
+  }
+  
+  .terms {
+    font-size: 12px;
+    margin-bottom: 15px; /* Added margin for separation from button */
+  }
+  
+  .terms a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Made it slightly more rounded */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+  
+  .btn:hover {
+    background-color: #0f7bee;
+  }
+  
+  div.text {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px; /* Added margin for spacing */
+  }
+  
